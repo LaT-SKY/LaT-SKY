@@ -27,10 +27,7 @@
 
 ### 📊 GitHub 统计
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=LaT-SKY&show_icons=true&theme=radical&locale=cn">
-  <img src="https://github-readme-stats.vercel.app/api?username=LaT-SKY&show_icons=true&locale=cn" />
-</picture>
+
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=LaT-SKY&theme=radical&locale=zh">
