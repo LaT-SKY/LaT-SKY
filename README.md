@@ -1,6 +1,6 @@
 <div align="center">
 
-# 👋 望向天脉 / LaT-SKY
+# 👋 望向天脉 / LaT-SKY / Miprota
 
 > 也称为 MihonoProta / Protakarose · umamusume
 
