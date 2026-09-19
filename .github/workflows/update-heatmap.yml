@@ -1,0 +1,57 @@
+name: 更新贡献热力图
+
+# assets/heat-*.svg 是生成好的静态文件，不会自己更新。
+# 这个 workflow 每天重跑一次 tools/update_heatmap.py 并把结果提交回去。
+#
+# 脚本零依赖：不装 pip 包、不装字体，只用 runner 自带的 gh 和 python3，
+# 也不需要 setup-python。
+#
+# 关于 GH_PAT：
+#   默认用仓库自带的 GITHUB_TOKEN，只能统计到**公开**贡献。
+#   想连私有仓库的贡献一起算，加一个名为 GH_PAT 的 secret
+#   （classic token，勾选 read:user）。不加也能正常跑。
+
+on:
+  schedule:
+    - cron: "23 21 * * *" # UTC 21:23，北京时间次日 05:23
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: heatmap
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 看看用的是哪个 token
+        env:
+          HAS_PAT: ${{ secrets.GH_PAT != '' }}
+        run: |
+          if [ "$HAS_PAT" = "true" ]; then
+            echo "使用 GH_PAT，包含私有仓库贡献"
+          else
+            echo "::notice::未配置 GH_PAT，本次只统计公开贡献"
+          fi
+
+      - name: 生成热力图
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+        run: python3 tools/update_heatmap.py
+
+      - name: 提交变化
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/heat-dark.svg assets/heat-light.svg
+          if git diff --staged --quiet; then
+            echo "数据没有变化，跳过提交"
+          else
+            git commit -m "chore: 更新贡献热力图"
+            git push
+          fi
