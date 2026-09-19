@@ -16,23 +16,23 @@
 给 KDE Plasma 6 写动态壁纸引擎，给 Arch 写控制中心和登录主题，也在维护一个自己的发行版。
 
 日常在 **QML / Qt Quick**、**Node.js** 和 **Python** 之间来回，绕不开 D-Bus、Wayland 协议和 Arch 打包。
-业余做一些二次元相关的小项目，别名 Miprota / Protakarose。
+业余做二次元相关的东西：马娘同人项目 [SCE 系列](https://github.com/OracleLoadstar)，我参与核心计算与项目领导。别名 Miprota / Protakarose。
 
 ## 在做
 
 - **[MipLinux](https://github.com/MipLinux/MipLinux)** —— 基于 Arch 的发行版。想解决两件具体的事：NVIDIA 驱动开箱可用，中文环境（输入法、字体、国内镜像）开箱可用。
 - **[mip-paper](https://github.com/LaT-SKY/mip-paper)** —— KDE Plasma 6 / KWin 6 / Wayland 的动态壁纸引擎，已在 AUR 发布。
-- **Mips** —— Arch Linux 控制中心。Qt Quick 界面，覆盖 Pacman / AUR / Flatpak 更新与硬件安全审计。
 
 ## 项目
 
 | 项目 | 说明 | 主要技术 |
 | --- | --- | --- |
 | [**mip-paper**](https://github.com/LaT-SKY/mip-paper) | 动态壁纸引擎。把壁纸铺到每台显示器的全屏 Canvas 上，加鼠标视差、悬浮信息面板和媒体音频频谱 | Electron · D-Bus · FFT |
-| [**AITAS**](https://github.com/ShanHuiSir/Teaching-System) | 比赛项目中的实训评价系统。我负责 Magic Bar、类 Niri 式作业审批界面、AI 功能、CI 自动化与服务器维护 | Vue · CI |
 | [**MipLinux**](https://github.com/MipLinux/MipLinux) | 基于 Arch 的滚动发行版，正在做安装程序之前的全部部分 | archiso · PKGBUILD |
-| **Mips** | 桌面管理中心。托盘常驻、D-Bus 单实例、中英切换、更新检查与硬件健康页 | Python · Qt Quick |
+| [**AITAS**](https://github.com/ShanHuiSir/Teaching-System) | 比赛项目中的实训评价系统。我负责 Magic Bar、类 Niri 式作业审批界面、AI 功能、CI 自动化与服务器维护 | Vue · CI |
+| [**SCE 系列**](https://github.com/OracleLoadstar) | 马娘同人项目。我参与核心计算与项目领导 | C++ · Java |
 | [**sddm-theme-miprota**](https://github.com/LaT-SKY/sddm-theme-miprota) | Material Design 3 风格的 SDDM 登录主题，多显示器、会话切换、登录失败抖动 | QML · PKGBUILD |
+| **Mips** | 桌面管理中心。托盘常驻、D-Bus 单实例、中英切换、更新检查与硬件健康页 —— 当前搁置 | Python · Qt Quick |
 
 ## 技术栈
 
