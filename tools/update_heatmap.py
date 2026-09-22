@@ -78,7 +78,10 @@ def render(data, theme):
     # 月份刻度：按每周中间那天判断是否翻月；末月靠右时改成右对齐，避免出画布
     ticks, prev_month, prev_x = [], None, -999
     for ci, week in enumerate(weeks):
-        mid = datetime.date.fromisoformat(week[3]["d"])
+        # 防护：如果是不完整的周（如第一周或最后一周），取最后一天作为判断基准
+        mid_day = week[3] if len(week) > 3 else week[-1]
+        mid = datetime.date.fromisoformat(mid_day["d"])
+        
         x = ci * PITCH
         if mid.month != prev_month and x - prev_x >= 46:
             anchor = "end" if x > W - 44 else "start"
