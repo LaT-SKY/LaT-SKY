@@ -38,8 +38,8 @@
 
 | 方向 | 在用的东西 |
 | --- | --- |
-| **系统** | Arch Linux · KDE Plasma 6 · KWin 6 · Wayland · SDDM · archiso |
-| **语言** | QML / Qt Quick · JavaScript（Node.js / Electron）· Python · C++ · Shell |
+| **系统** | Arch Linux · KDE Plasma 6 · KWin 6 · Wayland |
+| **语言** | QML / Qt Quick · TypeScript · Python · C++ · Shell |
 | **接口** | D-Bus · StatusNotifierItem · XDG |
 | **打包** | PKGBUILD · AUR · pacman · repo manifest |
 
