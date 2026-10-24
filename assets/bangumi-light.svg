@@ -2,7 +2,7 @@
 <defs><clipPath id="cover" clipPathUnits="userSpaceOnUse"><rect width="60" height="86" rx="5"/></clipPath></defs>
 <rect x="0.5" y="0.5" width="999" height="1087" rx="16" fill="#F6F8FA" stroke="#E3E6EC"/>
 <g transform="translate(28,28)">
-<text x="0" y="26" fill="#6B7280" font-size="22" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve">BANGUMI · 时光机</text>
+<text x="0" y="26" fill="#6B7280" font-size="22" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve">BANGUMI</text>
 <text x="944" y="26" fill="#6B7280" font-size="16" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' text-anchor="end" xml:space="preserve">bgm.tv/user/miprota</text>
 <rect x="0" y="44" width="944" height="1" fill="#E3E6EC"/>
 <rect x="0" y="64" width="4" height="18" rx="2" fill="#C43E63"/>
