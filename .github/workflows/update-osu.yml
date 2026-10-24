@@ -1,0 +1,44 @@
+name: 更新 osu!mania 成绩
+
+# assets/osu-*.svg 是生成好的静态文件，不会自己更新。
+# 这个 workflow 每天重跑一次 tools/update_osu.py 并把结果提交回去。
+#
+# 数据来自 osu! 的公开页面，不需要 API key，也不用配 secret：
+#   /users/<id>/mania             统计与排名历史
+#   /users/<id>/scores/best?...   最佳成绩
+# 脚本零依赖，只用 runner 自带的 python3。
+#
+# 如果 osu! 调整页面结构或开始拦截 Actions，脚本会失败并保留上一版卡片。
+
+on:
+  schedule:
+    - cron: "11 22 * * *" # UTC 22:11，北京时间次日 06:11
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osu
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: 生成卡片
+        run: python3 tools/update_osu.py
+
+      - name: 提交变化
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/osu-dark.svg assets/osu-light.svg
+          if git diff --staged --quiet; then
+            echo "数据没有变化，跳过提交"
+          else
+            git commit -m "chore: 更新 osu!mania 成绩"
+            git push
+          fi

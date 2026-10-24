@@ -1,0 +1,57 @@
+name: 更新 Galgame 记录
+
+# assets/galgame-*.svg 是生成好的静态文件，不会自己更新。
+# 这个 workflow 每天重跑一次 tools/update_galgame.py 并把结果提交回去。
+#
+# 需要先在仓库 Secrets 里配置：
+#   STEAM_API_KEY  Steam Web API key
+#
+# SteamID 写在 tools/update_galgame.py 里，不是 secret。
+# 如果 Steam 的「游戏详情」是私密的，GetOwnedGames 会返回空列表。
+#
+# VNDB 是公开 API，不需要 key；封面会内联进 SVG。
+# ImageMagick 用于把封面压到 160x240，runner 自带；没有也能跑，只是图大一点。
+
+on:
+  schedule:
+    - cron: "29 22 * * *" # UTC 22:29，北京时间次日 06:29
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: galgame
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: 检查 Steam API Key
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+        run: |
+          if [ -z "$STEAM_API_KEY" ]; then
+            echo "::error::请先在仓库 Secrets 里配置 STEAM_API_KEY"
+            exit 1
+          fi
+
+      - name: 生成卡片
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+        run: python3 tools/update_galgame.py
+
+      - name: 提交变化
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/galgame-dark.svg assets/galgame-light.svg
+          if git diff --staged --quiet; then
+            echo "数据没有变化，跳过提交"
+          else
+            git commit -m "chore: 更新 Galgame 记录"
+            git push
+          fi

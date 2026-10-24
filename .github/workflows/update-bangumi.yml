@@ -1,0 +1,43 @@
+name: 更新 Bangumi 在看
+
+# assets/bangumi-*.svg 是生成好的静态文件，不会自己更新。
+# 这个 workflow 每天重跑一次 tools/update_bangumi.py 并把结果提交回去。
+#
+# Bangumi 的公开 API 不需要 token，所以这里不用配 secret；
+# 脚本零依赖，只用 runner 自带的 python3。
+#
+# 注意：API 只认用户名（/v0/users/<username>），改名以后要同步改
+# tools/update_bangumi.py 里的 USER，否则每天都会 404。
+
+on:
+  schedule:
+    - cron: "47 21 * * *" # UTC 21:47，北京时间次日 05:47
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bangumi
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: 生成卡片
+        run: python3 tools/update_bangumi.py
+
+      - name: 提交变化
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/bangumi-dark.svg assets/bangumi-light.svg
+          if git diff --staged --quiet; then
+            echo "数据没有变化，跳过提交"
+          else
+            git commit -m "chore: 更新 Bangumi 在看"
+            git push
+          fi
