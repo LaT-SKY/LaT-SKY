@@ -27,7 +27,7 @@
 <text x="330" y="248" fill="#6B7280" font-size="14" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve">准确率</text>
 <text x="620" y="222" font-size="44" font-weight="500" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve"><tspan fill="#6B7280" font-size="26">#</tspan><tspan fill="#3A4256">185,255</tspan></text>
 <text x="620" y="248" fill="#6B7280" font-size="14" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve">全球排名</text>
-<text x="620" y="270" font-size="14" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve"><tspan fill="#6B7280">中国 </tspan><tspan fill="#3A4256">#17,071</tspan></text>
+<text x="620" y="270" font-size="14" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve"><tspan fill="#6B7280">中国 </tspan><tspan fill="#3A4256">#17,082</tspan></text>
 <text x="28" y="300" font-size="15" font-weight="400" font-family='ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace' xml:space="preserve"><tspan fill="#3A4256">1,325</tspan><tspan fill="#6B7280"> 次游玩 · </tspan><tspan fill="#3A4256">35.5</tspan><tspan fill="#6B7280"> 小时 · 最高连击 </tspan><tspan fill="#3A4256">2,380</tspan><tspan fill="#6B7280"> · 总命中 </tspan><tspan fill="#3A4256">1,071,709</tspan></text>
 <rect x="28" y="318" width="944" height="1" fill="#E3E6EC"/>
 <rect x="28" y="330" width="4" height="18" rx="2" fill="#C43E63"/>
